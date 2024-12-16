@@ -6,9 +6,6 @@ A simple, interactive web app designed to help learners practice elementary irre
 
 - **20+ Irregular Verbs**: Focused on vocabulary commonly used during travels.
 - **Visual Feedback**: 
-  - ✅ Correct answers result in a light green card.  
-  - 🟡 Partial answers turn yellow.  
-  - 🔴 Incorrect answers turn red.  
   All colors are pastel for a non-distracting experience.
 - **Interactive UI**: Bootstrap-styled buttons and animations for an engaging and responsive learning experience.
 - **Passive Voice Examples**: Each verb comes with examples, including passive constructions, to improve comprehension.
