@@ -18,7 +18,7 @@ const verbs = [
     { base: "find", past: "found", participle: "found", translation: "найти", example: "They found a great deal on flights. The lost passport has been found." },
     { base: "forget", past: "forgot", participle: "forgotten", translation: "забывать", example: "I forgot my wallet at home. The instructions have been forgotten by many tourists." },
     { base: "give", past: "gave", participle: "given", translation: "давать", example: "She gave directions to the museum. Information has been given to the travelers." },
-    { base: "get", past: "got", participle: "gotten", translation: "получать", example: "He got a visa for his trip. The travel documents have been gotten in time." },
+    { base: "get", past: "got", participle: "got", translation: "получать", example: "He got a visa for his trip. The travel documents have been got in time." },
     { base: "read", past: "read", participle: "read", translation: "читать", example: "I read a book during the flight. The travel guide has been read by everyone." },
     { base: "sleep", past: "slept", participle: "slept", translation: "спать", example: "They slept in a cozy cabin. The room has been slept in before." },
     { base: "take", past: "took", participle: "taken", translation: "брать", example: "We took a taxi to the airport. Many pictures were taken during the journey." },
