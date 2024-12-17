@@ -1,32 +1,13 @@
-const verbs = [
-    { base: "do", past: "did", participle: "done", translation: "делать", example: "I did the packing. The preparations have been done by the team." },
-    { base: "make", past: "made", participle: "made", translation: "делать", example: "We made a booking for the hotel. The reservation has been made." },
-    { base: "go", past: "went", participle: "gone", translation: "идти", example: "We went to Paris last summer. The group has gone to the airport." },
-    { base: "be", past: "was/were", participle: "been", translation: "быть", example: "I was in Italy last year. The tickets have been booked already." },
-    { base: "have", past: "had", participle: "had", translation: "иметь", example: "We had a great trip. The hotel had been prepared for guests." },
-    { base: "take", past: "took", participle: "taken", translation: "взять", example: "She took a map from the desk. The photo was taken at the Eiffel Tower." },
-    { base: "see", past: "saw", participle: "seen", translation: "видеть", example: "We saw many landmarks in London. The view has been seen by all passengers." },
-    { base: "write", past: "wrote", participle: "written", translation: "писать", example: "He wrote a postcard to his friend. The address was written incorrectly." },
-    { base: "buy", past: "bought", participle: "bought", translation: "купить", example: "They bought souvenirs at the market. Tickets have already been bought online." },
-    { base: "eat", past: "ate", participle: "eaten", translation: "есть", example: "We ate at a famous restaurant. Breakfast has been eaten in the dining hall." },
-    { base: "drink", past: "drank", participle: "drunk", translation: "пить", example: "She drank coffee during the flight. The water has been drunk already." },
-    { base: "fly", past: "flew", participle: "flown", translation: "летать", example: "We flew to New York yesterday. The plane has been flown by an experienced pilot." },
-    { base: "leave", past: "left", participle: "left", translation: "оставлять", example: "They left the station early in the morning. The luggage has been left in the room." },
-    { base: "bring", past: "brought", participle: "brought", translation: "приносить", example: "She brought her passport to the check-in counter. A new guidebook was brought for the trip." },
-    { base: "know", past: "knew", participle: "known", translation: "знать", example: "He knew the route by heart. The location has been known to locals for years." },
-    { base: "meet", past: "met", participle: "met", translation: "встречать", example: "We met our guide at the hotel lobby. A lot of travelers have been met at the station." },
-    { base: "find", past: "found", participle: "found", translation: "найти", example: "They found a great deal on flights. The lost passport has been found." },
-    { base: "forget", past: "forgot", participle: "forgotten", translation: "забывать", example: "I forgot my wallet at home. The instructions have been forgotten by many tourists." },
-    { base: "give", past: "gave", participle: "given", translation: "давать", example: "She gave directions to the museum. Information has been given to the travelers." },
-    { base: "get", past: "got", participle: "got", translation: "получать", example: "He got a visa for his trip. The travel documents have been got in time." },
-    { base: "read", past: "read", participle: "read", translation: "читать", example: "I read a book during the flight. The travel guide has been read by everyone." },
-    { base: "sleep", past: "slept", participle: "slept", translation: "спать", example: "They slept in a cozy cabin. The room has been slept in before." },
-    { base: "take", past: "took", participle: "taken", translation: "брать", example: "We took a taxi to the airport. Many pictures were taken during the journey." },
-    { base: "spend", past: "spent", participle: "spent", translation: "тратить/проводить", example: "She spent a lot of time exploring. A week has been spent in Italy." },
-    { base: "say", past: "said", participle: "said", translation: "сказать", example: "He said goodbye to his family. The announcement has been said repeatedly." }
-];
 
 let currentVerbIndex = Math.floor(Math.random() * verbs.length);
+
+// Pronunciation function
+function updateSpeakerButton() {
+    const currentVerb = verbs[currentVerbIndex].base;
+    const speakerButton = document.querySelector('.btn-sound');
+    speakerButton.setAttribute('onclick', `speak('${currentVerb}')`);
+}
+
 
 function loadVerb(index) {
     const verb = verbs[index];
@@ -38,12 +19,20 @@ function loadVerb(index) {
     document.querySelector('.pastparticiple').value = '';
     document.querySelector('#example').textContent = 'Example will appear here.';
     document.querySelector('.card').style.backgroundColor = ''; // Reset background color
+    updateSpeakerButton(); // Dynamically set the speaker's behavior
+}
+
+function speak(text) {
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = "en-US";
+    window.speechSynthesis.speak(utterance);
 }
 
 document.querySelector('.translate').addEventListener('click', () => {
     const verb = verbs[currentVerbIndex];
     document.querySelector('#translation').textContent = verb.translation;
 });
+
 
 document.querySelector('.check').addEventListener('click', () => {
     const verb = verbs[currentVerbIndex];
@@ -72,5 +61,35 @@ document.querySelector('.next').addEventListener('click', () => {
     loadVerb(currentVerbIndex);
 });
 
+
+
+
 // Load the first verb on page load
 loadVerb(currentVerbIndex);
+
+const modal = document.querySelector('.custom-modal');
+const overlay = document.querySelector('.overlay');
+const btnClose = document.querySelector('.close-modal');
+const btnShow = document.querySelector('.show-modal');
+
+// Open Modal
+btnShow.addEventListener('click', function () {
+    modal.classList.remove('hidden');
+    overlay.classList.remove('hidden');
+});
+
+// Close Modal Function
+const closeModal = function () {
+    modal.classList.add('hidden');
+    overlay.classList.add('hidden');
+};
+
+// Event Listeners for Close
+btnClose.addEventListener('click', closeModal);
+overlay.addEventListener('click', closeModal);
+
+
+
+
+
+
