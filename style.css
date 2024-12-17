@@ -1,4 +1,75 @@
 body {
     background-color: #f8f9fa;
+    margin: 0;
 }
+
+.hidden {
+    display: none;
+}
+
+/* Modal Styles */
+.custom-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%; 
+    max-width: 500px;
+    background-color: #fff;
+    padding: 1.5rem; 
+    border-radius: 8px;
+    box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+    z-index: 1050;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
+    z-index: 1040;
+}
+
+/* Close Button */
+.close-modal {
+    position: absolute;
+    top: 0.5rem; 
+    right: 0.5rem;
+    font-size: 2rem; 
+    color: #333;
+    border: none;
+    background: none;
+    cursor: pointer;
+    touch-action: manipulation; 
+}
+
+/* Info Button */
+.show-modal {
+    padding: 0.3rem;
+    font-size: 0.8rem;
+    line-height: 1;
+    box-shadow: none;
+}
+
+.show-modal:hover {
+    box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile-Specific Styles */
+@media (max-width: 768px) {
+    .custom-modal {
+        width: 90%; /* Ensures modal is more compact on mobile */
+        padding: 1rem; /* Less padding for smaller screens */
+    }
+
+    .close-modal {
+        font-size: 1.5rem; /* Slightly smaller close button */
+        top: 0.5rem; /* Better position */
+        right: 0.5rem;
+    }
+}
+
 
